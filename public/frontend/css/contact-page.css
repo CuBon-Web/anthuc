@@ -1,0 +1,310 @@
+.contact-page {
+    padding-top: calc(var(--topbar-h) + var(--header-h));
+    background:
+        radial-gradient(ellipse at 0% 8%, rgba(216, 170, 56, .16), transparent 34%),
+        radial-gradient(ellipse at 100% 0%, rgba(23, 63, 50, .06), transparent 28%),
+        #f6f1e6;
+    color: var(--ink);
+}
+
+.contact-page .bread-crumb {
+    background: transparent;
+    color: var(--muted);
+}
+
+.contact-page .bread-crumb .container {
+    padding-top: 14px;
+    padding-bottom: 6px;
+}
+
+.contact-page .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: transparent;
+    font-size: 13px;
+}
+
+.contact-page .breadcrumb li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-page .breadcrumb a {
+    color: var(--forest);
+}
+
+.contact-page .breadcrumb a:hover {
+    color: var(--gold-dark);
+}
+
+.contact-page .breadcrumb .mr_lr {
+    display: inline-flex;
+    opacity: .7;
+}
+
+.contact-page .breadcrumb svg {
+    width: 7px;
+    height: 12px;
+}
+
+.contact-page .breadcrumb strong {
+    color: var(--ink);
+    font-weight: 500;
+}
+
+.contact-page .title-head-contact {
+    margin: 8px 0 18px;
+    color: var(--forest);
+    font: 600 clamp(32px, 4vw, 46px)/1.15 var(--serif);
+    letter-spacing: -.03em;
+}
+
+.contact-page .title-head-contact:before {
+    content: "An Thực";
+    display: block;
+    margin-bottom: 8px;
+    color: var(--gold-dark);
+    font: 600 11px/1 var(--sans);
+    letter-spacing: .22em;
+    text-transform: uppercase;
+}
+
+.contact-page .layout-contact {
+    padding: 0 0 80px;
+}
+
+.contact-page .layout-contact > .container > .row {
+    align-items: stretch;
+}
+
+.contact-page .contact,
+.contact-page .form-contact {
+    margin-bottom: 16px;
+    padding: 22px 22px 18px;
+    border: 1px solid rgba(169, 121, 22, .22);
+    border-radius: 22px;
+    background: rgba(255, 253, 247, .72);
+}
+
+.contact-page .contact h4,
+.contact-page .form-contact h4 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 14px;
+    color: var(--forest);
+    font: 600 26px/1.25 var(--serif);
+    letter-spacing: -.02em;
+}
+
+.contact-page .contact h4:after,
+.contact-page .form-contact h4:after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(216, 170, 56, .7), transparent);
+}
+
+.contact-page .des_foo,
+.contact-page .des_foo p,
+.contact-page .content-form {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.contact-page .des_foo {
+    margin-bottom: 16px;
+}
+
+.contact-page .des_foo > *:last-child {
+    margin-bottom: 0;
+}
+
+.contact-page .group-address ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contact-page .group-address li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+}
+
+.contact-page .group-address li:first-child {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.contact-page .group-address .icon {
+    display: grid;
+    flex: 0 0 38px;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--forest-light);
+    color: var(--forest);
+}
+
+.contact-page .group-address .icon svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.contact-page .group-address .info {
+    min-width: 0;
+}
+
+.contact-page .group-address .info b {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--gold-dark);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.contact-page .group-address .info span,
+.contact-page .group-address .info a {
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+.contact-page .group-address .info a:hover {
+    color: var(--forest);
+}
+
+.contact-page .content-form {
+    display: block;
+    margin-bottom: 14px;
+}
+
+.contact-page .group_contact {
+    display: grid;
+    gap: 10px;
+}
+
+.contact-page .form-control {
+    min-height: 48px;
+    border: 1px solid rgba(23, 63, 50, .14);
+    border-radius: 14px;
+    background: #fffdf8;
+    color: var(--ink);
+    font-size: 14px;
+    box-shadow: none;
+}
+
+.contact-page textarea.form-control {
+    min-height: 130px;
+    padding-top: 12px;
+    resize: vertical;
+}
+
+.contact-page .form-control:focus {
+    border-color: var(--gold);
+    background: #fffdf8;
+    box-shadow: 0 0 0 3px rgba(216, 170, 56, .18);
+}
+
+.contact-page .form-control::placeholder {
+    color: #a8b0a6;
+}
+
+.contact-page .btn-lienhe {
+    justify-self: start;
+    min-height: 48px;
+    margin-top: 4px;
+    padding: 0 28px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--forest);
+    color: #fffdf7;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.contact-page .btn-lienhe:hover {
+    background: var(--forest-2);
+}
+
+.contact-page .alert {
+    border: 0;
+    border-radius: 14px;
+    font-size: 14px;
+}
+
+.contact-page .alert-success {
+    background: rgba(23, 63, 50, .08);
+    color: var(--forest);
+}
+
+.contact-page .alert-danger {
+    background: rgba(124, 41, 43, .08);
+    color: var(--wine);
+}
+
+.contact-page #js-global-alert {
+    display: none;
+}
+
+.contact-page .map {
+    height: 100%;
+    min-height: 520px;
+    overflow: hidden;
+    border: 1px solid rgba(169, 121, 22, .22);
+    border-radius: 22px;
+    background: rgba(255, 253, 247, .72);
+}
+
+.contact-page .map iframe {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 520px;
+    border: 0;
+}
+
+@media (max-width: 991.98px) {
+    .contact-page .map,
+    .contact-page .map iframe {
+        min-height: 320px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .contact-page .contact,
+    .contact-page .form-contact,
+    .contact-page .map {
+        border-radius: 18px;
+    }
+
+    .contact-page .contact,
+    .contact-page .form-contact {
+        padding: 18px 14px 14px;
+    }
+
+    .contact-page .title-head-contact {
+        font-size: 32px;
+    }
+
+    .contact-page .btn-lienhe {
+        width: 100%;
+    }
+}
