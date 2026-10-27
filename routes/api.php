@@ -17,6 +17,7 @@ Route::post('store_file','Api\AllController@fileStore');
 Route::group(['namespace'=>'Api','middleware' => 'api'],function(){
 	Route::post('login','AuthController@login');
 	Route::post('upload-image','AllController@uploadImage');
+	Route::post('upload-image-local','AllController@uploadImageLocal');
 	Route::post('upload-image-multi','AllController@uploadImageMulti');
 	
 });

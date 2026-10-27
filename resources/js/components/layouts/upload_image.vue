@@ -38,7 +38,11 @@
                 type: Number,
                 default: 1000
             },
-            title:""
+            title:"",
+            endpoint: {
+                type: String,
+                default: "api/upload-image"
+            }
         },
         data() {
             return {
@@ -115,7 +119,7 @@
                         var xhr, formData;
                         xhr = new XMLHttpRequest();
                         xhr.withCredentials = false;
-                        xhr.open('POST', __ENV__.link + 'api/upload-image');
+                        xhr.open('POST', __ENV__.link + this.endpoint);
                         xhr.onload = () => {
                             var json;
                             if (xhr.status != 200) {

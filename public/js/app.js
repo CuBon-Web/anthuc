@@ -19192,7 +19192,11 @@ __webpack_require__.r(__webpack_exports__);
       type: Number,
       "default": 1000
     },
-    title: ""
+    title: "",
+    endpoint: {
+      type: String,
+      "default": "api/upload-image"
+    }
   },
   data: function data() {
     return {
@@ -19279,7 +19283,7 @@ __webpack_require__.r(__webpack_exports__);
         var xhr, formData;
         xhr = new XMLHttpRequest();
         xhr.withCredentials = false;
-        xhr.open('POST', __ENV__.link + 'api/upload-image');
+        xhr.open('POST', __ENV__.link + _this.endpoint);
 
         xhr.onload = function () {
           var json;
@@ -31576,6 +31580,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
 //
 //
 //
@@ -355369,7 +355376,8 @@ var render = function() {
                               _c("image-upload", {
                                 attrs: {
                                   type: "avatar",
-                                  title: "banner-trang-chu"
+                                  title: "banner-trang-chu",
+                                  endpoint: "api/upload-image-local"
                                 },
                                 model: {
                                   value: item.image,
@@ -355396,7 +355404,8 @@ var render = function() {
                               _c("image-upload", {
                                 attrs: {
                                   type: "avatar",
-                                  title: "banner-trang-chu-mobile"
+                                  title: "banner-trang-chu-mobile",
+                                  endpoint: "api/upload-image-local"
                                 },
                                 model: {
                                   value: item.image_mobile,
@@ -355430,7 +355439,8 @@ var render = function() {
                               _c("image-upload", {
                                 attrs: {
                                   type: "avatar",
-                                  title: "banner-youtube-poster"
+                                  title: "banner-youtube-poster",
+                                  endpoint: "api/upload-image-local"
                                 },
                                 model: {
                                   value: item.image,

@@ -39,6 +39,7 @@
                       type="avatar"
                       v-model="item.image"
                       :title="'banner-trang-chu'"
+                      endpoint="api/upload-image-local"
                     ></image-upload>
                   </div>
                 </div>
@@ -50,6 +51,7 @@
                       type="avatar"
                       v-model="item.image_mobile"
                       :title="'banner-trang-chu-mobile'"
+                      endpoint="api/upload-image-local"
                     ></image-upload>
                   </div>
                 </div>
@@ -64,6 +66,7 @@
                       type="avatar"
                       v-model="item.image"
                       :title="'banner-youtube-poster'"
+                      endpoint="api/upload-image-local"
                     ></image-upload>
                   </div>
                 </div>

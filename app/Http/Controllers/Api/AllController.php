@@ -39,6 +39,55 @@ class AllController extends Controller
             'path' => $response['result']['variants'][0],
         ], 200);
     }
+
+    /**
+     * Upload ảnh trực tiếp lên server (không qua Cloudflare).
+     * Dùng cho banner và các chỗ cần lưu local.
+     */
+    public function uploadImageLocal(Request $request)
+    {
+        if (!$request->hasFile('img')) {
+            return response()->json(['data' => 'fail', 'message' => 'Không có file ảnh'], 500);
+        }
+
+        $image = $request->file('img');
+        if (!$image->isValid()) {
+            return response()->json(['data' => 'fail', 'message' => 'File ảnh không hợp lệ'], 500);
+        }
+
+        $allowedMimes = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg', 'image/gif'];
+        $mime = $image->getMimeType();
+        if (!in_array($mime, $allowedMimes, true)) {
+            return response()->json([
+                'data' => 'fail',
+                'message' => 'Chỉ chấp nhận JPG, PNG, WebP hoặc GIF',
+            ], 500);
+        }
+
+        $ext = strtolower($image->getClientOriginalExtension() ?: 'jpg');
+        $allowedExt = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+        if (!in_array($ext, $allowedExt, true)) {
+            $ext = 'jpg';
+        }
+
+        $title = trim((string) $request->input('title_post', 'banner'));
+        $slug = preg_replace('/[^a-z0-9\-]+/', '-', strtolower($title));
+        $slug = trim($slug, '-') ?: 'banner';
+        $filename = $slug . '-' . time() . '-' . mt_rand(1000, 9999) . '.' . $ext;
+
+        $folder = public_path('uploads/banner');
+        if (!is_dir($folder)) {
+            mkdir($folder, 0755, true);
+        }
+
+        $image->move($folder, $filename);
+        $path = '/uploads/banner/' . $filename;
+
+        return response()->json([
+            'messenge' => 'success',
+            'path' => $path,
+        ], 200);
+    }
     public function uploadImageMulti(Request $request)
     {
         $uploadId = [];
