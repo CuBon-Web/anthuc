@@ -42,6 +42,10 @@
             endpoint: {
                 type: String,
                 default: "api/upload-image"
+            },
+            compress: {
+                type: Boolean,
+                default: true
             }
         },
         data() {
@@ -110,36 +114,41 @@
                 }
                 return true;
             },
+            uploadFile(file) {
+                this.loading = true;
+                var xhr = new XMLHttpRequest();
+                xhr.withCredentials = false;
+                xhr.open('POST', __ENV__.link + this.endpoint);
+                xhr.onload = () => {
+                    var json;
+                    if (xhr.status != 200) {
+                        this.$notify.error({
+                            message: 'HTTP Error: ' + xhr.status,
+                            type: 'success'
+                        });
+                        this.loading = false;
+                        return;
+                    }
+                    json = JSON.parse(xhr.responseText);
+                    this.imageUrl = URL.createObjectURL(file);
+                    this.loading = false;
+                    return this.$emit('input', json.path.replace(__ENV__.link,'/'));
+                };
+                var formData = new FormData();
+                formData.append('img', file, file.name || 'image.jpg');
+                formData.append("title_post", this.getslugname(this.title));
+                xhr.send(formData);
+            },
             request(req) {
-                const compress = imageCompression(req.file, this.getCompressionOptions(req.file))
-                    .catch(() => req.file);
-                compress
+                if (!this.compress) {
+                    this.uploadFile(req.file);
+                    return;
+                }
+                imageCompression(req.file, this.getCompressionOptions(req.file))
+                    .catch(() => req.file)
                     .then(res => {
-                        this.loading = true;
-                        var xhr, formData;
-                        xhr = new XMLHttpRequest();
-                        xhr.withCredentials = false;
-                        xhr.open('POST', __ENV__.link + this.endpoint);
-                        xhr.onload = () => {
-                            var json;
-                            if (xhr.status != 200) {
-                                this.$notify.error({
-                                    message: 'HTTP Error: ' + xhr.status,
-                                    type: 'success'
-                                });
-                                this.loading = false;
-                                return;
-                            }
-                            json = JSON.parse(xhr.responseText);
-                            this.imageUrl = URL.createObjectURL(res);
-                            this.loading = false;
-                            return this.$emit('input', json.path.replace(__ENV__.link,'/'));
-                        };
-                        formData = new FormData();
-                        formData.append('img', res, req.file.name);
-                        formData.append("title_post", this.getslugname(this.title));
-                        xhr.send(formData);
-                    })
+                        this.uploadFile(res);
+                    });
             }
         },
         created() {
